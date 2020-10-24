@@ -4,7 +4,7 @@ const cheerio = require("cheerio");
 const mongodb = require("mongodb");
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 9000;
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.listen(PORT, () => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile("public/index.html");
+  res.sendFile("reactapp/public/index.html");
 });
 
 let ids = [

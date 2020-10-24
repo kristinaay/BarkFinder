@@ -13,6 +13,7 @@
     "cheerio": "^1.0.0-rc.3",
     "epxress": "0.0.1-security",
     "express": "^4.17.1",
+    "express-generator": "^4.16.1",
     "mongodb": "^3.6.2"
   },
   "devDependencies": {
