@@ -1,9 +1,6 @@
 const express = require("express");
 const axios = require("axios");
 const cheerio = require("cheerio");
-const mongodb = require("mongodb");
-const MongoClient = require("mongodb").MongoClient;
-const assert = require("assert");
 const PORT = process.env.PORT || 9000;
 
 const app = express();
