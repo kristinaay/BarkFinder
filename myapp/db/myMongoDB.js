@@ -33,7 +33,14 @@ function MyDB() {
     for (let i = 0; i < ids.length; i++) {
       let element = await scraperFunction(ids[i], i);
       console.log(element);
-      await dog_info.insertOne({ name: element });
+      await dog_info.insertOne({
+        name: element[0],
+        gender: element[1],
+        breed: element[2],
+        age: element[3],
+        link: element[4],
+        picLink: element[5],
+      });
     }
   };
 

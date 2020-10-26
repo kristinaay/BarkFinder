@@ -20,8 +20,8 @@ app.listen(PORT, () => {
 app.get("/", async (req, res) => {
   await myDB.initialize();
   let posts = await myDB.getPosts();
-  console.log(posts);
-  res.send("done");
+  //console.log(JSON.stringify(posts));
+  res.send(JSON.stringify(posts));
 });
 
 let ids = [
@@ -98,7 +98,7 @@ async function scraperFunction(item, index) {
 }
 
 /* GET home page. */
-router.get("/", function (req, res, next) {});
+//router.get("/", function (req, res, next) {});
 
 module.exports = router;
 exports.scraperFunction = scraperFunction;
