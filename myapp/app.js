@@ -9,7 +9,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const app = express();
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 3000;
 
 // view engine setup
 app.engine("pug", require("pug").__express);

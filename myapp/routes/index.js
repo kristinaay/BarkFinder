@@ -20,7 +20,7 @@ app.listen(PORT, () => {
 app.get("/", async (req, res) => {
   await myDB.initialize();
   let posts = await myDB.getPosts();
-  //console.log(JSON.stringify(posts));
+  console.log("done");
   res.send(JSON.stringify(posts));
 });
 
@@ -28,7 +28,6 @@ let ids = [
   "16078355",
   "16078363",
   "16077601",
-  "16157843",
   "15996385",
   "15996388",
   "15843625",

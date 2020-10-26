@@ -34,12 +34,12 @@ function MyDB() {
       let element = await scraperFunction(ids[i], i);
       console.log(element);
       await dog_info.insertOne({
-        name: element[0],
-        gender: element[1],
-        breed: element[2],
-        age: element[3],
-        link: element[4],
-        picLink: element[5],
+        name: element.name,
+        gender: element.gender,
+        breed: element.breed,
+        age: element.age,
+        link: element.link,
+        picLink: element.picLink,
       });
     }
   };
