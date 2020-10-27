@@ -74,7 +74,7 @@ class SignUp extends React.Component {
                     </a>
                   </div>
                   <div className="form-group">
-                    Already an user? <a href="sign_in.html">Sign In</a>
+                    Already an user? <Link to="/signin">Sign In</Link>
                     <br />
                     <Link to="/">Cancel and return home</Link>
                   </div>

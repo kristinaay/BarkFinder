@@ -65,7 +65,7 @@ class SignIn extends React.Component {
               </div>
               <div className="card-footer">
                 <div>
-                  <a href="sign_up.html">Sign up here</a>
+                  <Link to="/signup">Sign up here</Link>
                 </div>
                 <div>
                   <Link to="/">Cancel and return home</Link>
