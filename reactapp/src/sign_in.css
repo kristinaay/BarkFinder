@@ -4,6 +4,10 @@ body {
   margin: 0px;
 }
 
+.SignIn {
+  background: url(./Images/sign_in.jpg) center center / cover no-repeat;
+}
+
 .card {
   background-color: whitesmoke;
   opacity: 0.8;
