@@ -1,23 +1,10 @@
 var express = require("express");
 var router = express.Router();
-//const myDB = require("../db/myMongoDB.js");
+const myDB = require("../db/myMongoDB.js");
 const axios = require("axios");
 const cheerio = require("cheerio");
-const PORT = process.env.PORT || 3000;
 
-const app = express();
-const myDB = require("../db/myMongoDB.js");
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-app.use(express.static("public"));
-
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}.`);
-});
-
-app.get("/", async (req, res) => {
+router.get("/", async (req, res) => {
   await myDB.initialize();
   let posts = await myDB.getPosts();
   console.log("done");
