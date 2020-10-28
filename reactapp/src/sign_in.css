@@ -1,7 +1,10 @@
 html,
 body {
-  background: url(./Images/sign_in.jpg) center center / cover no-repeat;
   margin: 0px;
+}
+
+.SignIn {
+  background: url(./Images/sign_in.jpg) center center / cover no-repeat;
 }
 
 .card {

@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import "./sign_up.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class SignUp extends React.Component {
   render() {
@@ -73,9 +74,9 @@ class SignUp extends React.Component {
                     </a>
                   </div>
                   <div className="form-group">
-                    Already an user? <a href="sign_in.html">Sign In</a>
+                    Already an user? <Link to="/signin">Sign In</Link>
                     <br />
-                    <a href="index.html">Cancel and return home</a>
+                    <Link to="/">Cancel and return home</Link>
                   </div>
                 </form>
               </div>

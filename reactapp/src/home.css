@@ -26,6 +26,7 @@ section {
 }
 
 .navbar {
+  display: block;
   margin: 10px;
   position: fixed;
   width: 96%;

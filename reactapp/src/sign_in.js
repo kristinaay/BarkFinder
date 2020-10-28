@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import "./sign_in.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class SignIn extends React.Component {
   render() {
@@ -64,10 +65,10 @@ class SignIn extends React.Component {
               </div>
               <div className="card-footer">
                 <div>
-                  <a href="sign_up.html">Sign up here</a>
+                  <Link to="/signup">Sign up here</Link>
                 </div>
                 <div>
-                  <a href="index.html">Cancel and return home</a>
+                  <Link to="/">Cancel and return home</Link>
                 </div>
               </div>
             </div>
