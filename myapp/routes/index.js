@@ -11,6 +11,13 @@ router.get("/", async (req, res) => {
   res.send(JSON.stringify(posts));
 });
 
+router.get("/posts", async (req, res) => {
+    await myDB.initialize();
+    let posts = await myDB.getPosts();
+    console.log("done");
+    res.send(JSON.stringify(posts));
+});
+
 let ids = [
   "16078355",
   "16078363",
