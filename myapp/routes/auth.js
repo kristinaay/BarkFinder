@@ -33,7 +33,7 @@ Passport.use(
       const client = new MongoClient(uri, { useUnifiedTopology: true });
       await client.connect();
       //database
-      const db = await client.db("account");
+      const db = await client.db("db");
       const users = db.collection("users");
 
       users.findOne({ username }, (err, user) => {
@@ -86,6 +86,8 @@ router.get("/signup", (req, res, next) => {
 router.post("/signup", async (req, res, next) => {
   const users = await myDB.initializeUsers();
   const registrationParams = req.body;
+  console.log(req.body);
+  console.log(registrationParams.password);
   if (registrationParams.password != registrationParams.password2) {
     req.flash("error", "Passwords do not match.");
     res.redirect("/signup");
@@ -94,19 +96,21 @@ router.post("/signup", async (req, res, next) => {
       username: registrationParams.username,
       password: authUtils.encrypt(registrationParams.password),
     };
+
+    console.log(payload);
+
     // users.findOne({ username: registrationParams.username }, function (
     //   err,
     //   user
     // ) {
-    //   console.log("donea");
     //   if (err) {
     //     return next(err);
     //   }
     //   if (user) {
-    //     res.redirect("/signup");
+    //     req.flash("error", "User already exists");
+    //     res.redirect("/auth/signup");
     //   }
     // });
-    console.log("done1");
 
     users.insertOne(payload, (err) => {
       if (err) {
