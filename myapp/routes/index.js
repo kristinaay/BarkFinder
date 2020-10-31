@@ -11,32 +11,21 @@ router.get("/", async (req, res) => {
   res.send(JSON.stringify(posts));
 });
 
-router.get("/posts", async (req, res) => {
-    await myDB.initialize();
-    let posts = await myDB.getPosts();
-    console.log("done");
-    res.send(JSON.stringify(posts));
+//to get dogs for the slideshow and table
+router.get("/getdogs", async (req, res) => {
+  await myDB.initialize();
+  let posts = await myDB.getPosts();
+  console.log("done");
+  res.json(posts);
 });
 
 let ids = [
-  "16078355",
-  "16078363",
-  "16077601",
-  "15996385",
-  "15996388",
-  "15843625",
-  "15843829",
-  "15989183",
-  "15989245",
   "15889485",
-  "16155165",
-  "16113242",
   "15935798",
-  "15840526",
-  "15992988",
-  "16118066",
-  "16039442",
   "15840509",
+  "15766458",
+  "15910636",
+  "15996385",
 ];
 
 let names = [];
