@@ -6,6 +6,12 @@ function Home() {
   return (
     <div>
       <div className="navbar">
+        <Link to="/dogs">
+          <button type="button">Dog Slideshow</button>
+        </Link>
+        <Link to="/table">
+          <button type="button">Dog Info</button>
+        </Link>
         <Link to="/signup">
           <button type="button">Sign Up</button>
         </Link>
@@ -32,11 +38,9 @@ function Home() {
         <div className="main" id="second">
           <header>How does it work?</header>
           <p>
-            PupFinder takes your preferences and our algorithm to match you to
-            your perfect dog! We take dogs from foster homes all over the Bay
+            We take dogs from foster homes all over the Bay
             Area and bring them right to your fingertips in the comfort of your
-            own home. So once you've created an account and entered your
-            preferences, you can sit back, relax, and let us bring your future
+            own home. So once you've created an account, you can sit back, relax, and let us bring your future
             dog right to your computer.
           </p>
         </div>
