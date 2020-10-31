@@ -29,8 +29,8 @@ section {
   display: block;
   margin: 10px;
   position: fixed;
-  width: 96%;
-  align-items: right;
+  width: 99%;
+  align-items: end;
   z-index: 2;
 }
 

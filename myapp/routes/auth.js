@@ -120,7 +120,7 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
-router.get("/signout", (req, res, next) => {
+router.post("/signout", (req, res, next) => {
   req.session.destroy();
   res.redirect("/");
 });

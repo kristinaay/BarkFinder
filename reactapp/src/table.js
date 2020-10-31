@@ -11,6 +11,7 @@ import {
 import TableContainer from "./TableContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { SelectColumnFilter } from "./filters";
+import { Link } from "react-router-dom";
 
 const Table = () => {
   const [dogs, setDogs] = useState([]);
@@ -38,14 +39,16 @@ const Table = () => {
   const renderRowSubComponent = (row) => {
     const { name, gender, picLink } = row.original;
     return (
-      <Card style={{ width: "18rem", margin: "0 auto" }}>
-        <CardImg top src={picLink} alt="Card image cap" />
-        <CardBody>
-          <CardTitle>
-            <strong>{`${name}`} </strong>
-          </CardTitle>
-        </CardBody>
-      </Card>
+      <div>
+        <Card style={{ width: "18rem", margin: "0 auto" }}>
+          <CardImg top src={picLink} alt="Card image cap" />
+          <CardBody>
+            <CardTitle>
+              <strong>{`${name}`} </strong>
+            </CardTitle>
+          </CardBody>
+        </Card>
+      </div>
     );
   };
 
@@ -92,13 +95,23 @@ const Table = () => {
 
   if (loaded) {
     return (
-      <Container style={{ marginTop: 100 }}>
-        <TableContainer
-          columns={columns}
-          data={dogs}
-          renderRowSubComponent={renderRowSubComponent}
-        />
-      </Container>
+      <div>
+        <form className="form" action="/auth/signout" method="post">
+          <input
+            className="button"
+            type="submit"
+            name="signout"
+            value="Sign Out"
+          />
+        </form>
+        <Container style={{ marginTop: 100 }}>
+          <TableContainer
+            columns={columns}
+            data={dogs}
+            renderRowSubComponent={renderRowSubComponent}
+          />
+        </Container>
+      </div>
     );
   } else {
     return (
