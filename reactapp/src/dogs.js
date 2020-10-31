@@ -2,6 +2,7 @@ import "./dogs.css";
 import Slider from "./Slider";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import dogimage from "./Images/buffer2.jpg"
 
 function Dogs() {
   const [dogs, setDogs] = useState([]);
@@ -33,11 +34,15 @@ function Dogs() {
       </div>
     );
   } else {
+
     return (
-      <h1 className="loading">
-        Loading! Thank you for your patience! The dogs appreciate it!
-      </h1>
-    );
+        <div>
+          <img
+              src={dogimage}
+              alt="dog says thank you for waiting as the page loads"
+          />
+        </div>
+    )
   }
 }
 export default Dogs;
