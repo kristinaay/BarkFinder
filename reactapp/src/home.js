@@ -7,7 +7,7 @@ function Home() {
     <div>
       <div className="navbar">
         <Link to="/dogs">
-          <button type="button">Dog Slideshow</button>
+          <button type="button">Dog Preview</button>
         </Link>
         <Link to="/signup">
           <button type="button">Sign Up</button>

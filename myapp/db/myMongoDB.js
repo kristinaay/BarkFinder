@@ -48,7 +48,7 @@ function MyDB() {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
     await client.connect();
 
-    const db = client.db("account");
+    const db = client.db("db");
     const users = db.collection("users");
     return users;
   };
@@ -57,7 +57,7 @@ function MyDB() {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
     await client.connect();
     //database
-    const db = client.db("account");
+    const db = client.db("db");
     //collection
     const users = db.collection("users");
 

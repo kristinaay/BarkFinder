@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import "./table.css";
+import dogimage from "./Images/buffer.jpg"
 import {
   Container,
   Card,
@@ -59,7 +60,7 @@ const Table = () => {
         id: "expander", // 'id' is required
         Cell: ({ row }) => (
           <span {...row.getToggleRowExpandedProps()}>
-            {row.isExpanded ? "👇" : "👉"}
+            {row.isExpanded ? "⬆️️" : "📷"}
           </span>
         ),
       },
@@ -114,13 +115,15 @@ const Table = () => {
       </div>
     );
   } else {
+
     return (
-      <div className="loadingbg">
-        <h1 className="loading">
-          Loading! Thank you for your patience! The dogs appreciate it!
-        </h1>
-      </div>
-    );
+        <div>
+            <img
+                src={dogimage}
+                alt="dog says thank you for waiting as the page loads"
+            />
+        </div>
+  )
   }
 };
 
