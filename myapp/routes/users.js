@@ -1,8 +1,13 @@
 var express = require("express");
 var router = express.Router();
-const ObjectID = require("mongodb").ObjectID;
+
+router.get("/", function (req, res, next) {
+  console.log("hi");
+  res.send("ugh");
+});
 
 router.get("/users", function (req, res, next) {
+  console.log("hi");
   res.send("done");
 });
 

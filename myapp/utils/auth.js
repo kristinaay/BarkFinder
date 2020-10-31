@@ -4,17 +4,9 @@ const crypto = require("crypto"),
 
 function encrypt(data) {
   let cipher = crypto.createCipheriv("aes-256-cbc", key, iv);
-  //cipher.update(data, "utf8", "hex");
   let encryptdata = cipher.update(data, "utf8", "binary");
   encryptdata += cipher.final("binary");
   return encryptdata;
-  // return {
-  //   iv: iv.toString("hex"),
-  //   content: cipher.final().toString("hex"),
-  // };
-  // return Buffer.concat([cipher.update(data, "utf-8"), cipher.final()]).toString(
-  //   "hex"
-  // );
 }
 
 function decrypt(data) {

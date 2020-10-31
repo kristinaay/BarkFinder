@@ -74,7 +74,7 @@ router.post(
     messages: flash("Invalid username or password"),
   }),
   (req, res, next) => {
-    res.redirect("/users");
+    res.redirect("/table");
   }
 );
 
