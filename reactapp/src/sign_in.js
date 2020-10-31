@@ -13,35 +13,35 @@ function SignIn() {
               <h3>Sign In</h3>
             </div>
             <div className="card-body">
-              <form>
+              <form action="/auth/signin" method="POST">
                 <div className="form-group">
                   <label for="inputUserName">Username</label>
                   <input
                     type="text"
-                    id="inputUserName"
+                    id="username"
                     className="form-control"
                     placeholder="Alice"
+                    name="username"
                   />
                 </div>
                 <div className="form group">
                   <label for="inputPassword">Password</label>
                   <input
                     type="password"
-                    id="inputPassword"
+                    id="password"
                     className="form-control"
                     placeholder="123abc"
+                    name="password"
                   />
                 </div>
+                <div className="error"> </div>
                 <div className="form-group">
-                  <a
-                    href="/app.js"
-                    input
+                  <input
                     type="submit"
                     className="btn btn-dark"
                     style={{ marginTop: "10px" }}
-                  >
-                    Sign In
-                  </a>
+                    value="Sign In"
+                  />
                 </div>
               </form>
             </div>

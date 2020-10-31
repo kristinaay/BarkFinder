@@ -14,46 +14,46 @@ class SignUp extends React.Component {
                 <h3>Sign Up</h3>
               </div>
               <div className="card-body">
-                <form method="POST" action="/post_sign_up">
+                <form action="/auth/signup" method="POST">
                   <div className="form-group">
-                    <label for="inputUserName">Username</label>
+                    <label for="username">Username</label>
                     <input
                       type="text"
-                      id="inputUserName"
+                      id="username"
+                      name="username"
                       className="form-control"
                       placeholder="Alice"
                     />
                   </div>
 
                   <div className="form-group">
-                    <label for="inputPassword">Password</label>
+                    <label for="password">Password</label>
                     <input
-                      type="text"
-                      id="inputPassword"
+                      type="password"
+                      id="password"
+                      name="password"
                       className="form-control"
                       placeholder="123abc"
                     />
                   </div>
                   <div className="form group">
-                    <label for="inputPassword">Verify Password</label>
+                    <label for="password2">Verify Password</label>
                     <input
                       type="password"
-                      id="inputPassword2"
+                      id="password2"
+                      name="password2"
                       className="form-control"
                       placeholder="123abc"
                     />
                   </div>
 
                   <div className="form-group">
-                    <a
-                      href="./app.js"
-                      input
+                    <input
                       type="submit"
                       className="btn btn-dark"
                       style={{ marginTop: "10px" }}
-                    >
-                      Sign Up
-                    </a>
+                      value="Sign Up"
+                    />
                   </div>
                   <div className="form-group">
                     Already an user? <Link to="/signin">Sign In</Link>
