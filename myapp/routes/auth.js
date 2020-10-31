@@ -94,18 +94,18 @@ router.post("/signup", async (req, res, next) => {
       username: registrationParams.username,
       password: authUtils.encrypt(registrationParams.password),
     };
-    users.findOne({ username: registrationParams.username }, function (
-      err,
-      user
-    ) {
-      console.log("donea");
-      if (err) {
-        return next(err);
-      }
-      if (user) {
-        res.redirect("/signup");
-      }
-    });
+    // users.findOne({ username: registrationParams.username }, function (
+    //   err,
+    //   user
+    // ) {
+    //   console.log("donea");
+    //   if (err) {
+    //     return next(err);
+    //   }
+    //   if (user) {
+    //     res.redirect("/signup");
+    //   }
+    // });
     console.log("done1");
 
     users.insertOne(payload, (err) => {
