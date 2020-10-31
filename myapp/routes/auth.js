@@ -86,8 +86,6 @@ router.get("/signup", (req, res, next) => {
 router.post("/signup", async (req, res, next) => {
   const users = await myDB.initializeUsers();
   const registrationParams = req.body;
-  console.log(req.body);
-  console.log(registrationParams.password);
   if (registrationParams.password != registrationParams.password2) {
     req.flash("error", "Passwords do not match.");
     res.redirect("/signup");
@@ -96,21 +94,19 @@ router.post("/signup", async (req, res, next) => {
       username: registrationParams.username,
       password: authUtils.encrypt(registrationParams.password),
     };
-
-    console.log(payload);
-
-    // users.findOne({ username: registrationParams.username }, function (
-    //   err,
-    //   user
-    // ) {
-    //   if (err) {
-    //     return next(err);
-    //   }
-    //   if (user) {
-    //     req.flash("error", "User already exists");
-    //     res.redirect("/auth/signup");
-    //   }
-    // });
+    users.findOne({ username: registrationParams.username }, function (
+      err,
+      user
+    ) {
+      console.log("donea");
+      if (err) {
+        return next(err);
+      }
+      if (user) {
+        res.redirect("/signup");
+      }
+    });
+    console.log("done1");
 
     users.insertOne(payload, (err) => {
       if (err) {

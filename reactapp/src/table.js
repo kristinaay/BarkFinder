@@ -101,7 +101,13 @@ const Table = () => {
       </Container>
     );
   } else {
-    return <h1>Loading! Thank you for your patience! The dogs appreciate it!</h1>;
+    return (
+      <div className="loadingbg">
+        <h1 className="loading">
+          Loading! Thank you for your patience! The dogs appreciate it!
+        </h1>
+      </div>
+    );
   }
 };
 
