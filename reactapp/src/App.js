@@ -1,5 +1,4 @@
 import React from "react";
-import { Helmet } from "react-helmet";
 import SignIn from "./sign_in.js";
 import Home from "./home.js";
 import SignUp from "./sign_up.js";

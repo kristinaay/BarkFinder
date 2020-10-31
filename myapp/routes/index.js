@@ -4,18 +4,11 @@ const myDB = require("../db/myMongoDB.js");
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-router.get("/", async (req, res) => {
+router.get("/posts", async (req, res) => {
   await myDB.initialize();
   let posts = await myDB.getPosts();
   console.log("done");
   res.send(JSON.stringify(posts));
-});
-
-router.get("/posts", async (req, res) => {
-    await myDB.initialize();
-    let posts = await myDB.getPosts();
-    console.log("done");
-    res.send(JSON.stringify(posts));
 });
 
 let ids = [
