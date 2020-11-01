@@ -8,7 +8,7 @@ function SignIn() {
     <div>
       <div className="SignIn">
         <div className="container-fluid d-flex justify-content-center">
-          <div className="card">
+          <div className="signcard">
             <div className="card-header">
               <h3>Sign In</h3>
             </div>
@@ -34,7 +34,7 @@ function SignIn() {
                     name="password"
                   />
                 </div>
-                <div className="error"> </div>
+                <br />
                 <div className="form-group">
                   <input
                     type="submit"

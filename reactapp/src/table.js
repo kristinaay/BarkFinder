@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import "./table.css";
-import dogimage from "./Images/buffer.jpg"
+import dogimage from "./Images/buffer.jpg";
 import {
   Container,
   Card,
@@ -97,14 +97,21 @@ const Table = () => {
   if (loaded) {
     return (
       <div>
-        <form className="form" action="/auth/signout" method="post">
-          <input
-            className="button"
-            type="submit"
-            name="signout"
-            value="Sign Out"
-          />
-        </form>
+        <div className="buttons">
+          <form className="form" action="/auth/signout" method="post">
+            <input
+              className="button"
+              type="submit"
+              name="signout"
+              value="Sign Out"
+            />
+          </form>
+          <Link to="/userprofile">
+            <button className="button2" type="button">
+              My Account
+            </button>
+          </Link>
+        </div>
         <Container style={{ marginTop: 100 }}>
           <TableContainer
             columns={columns}
@@ -115,15 +122,14 @@ const Table = () => {
       </div>
     );
   } else {
-
     return (
-        <div>
-            <img
-                src={dogimage}
-                alt="dog says thank you for waiting as the page loads"
-            />
-        </div>
-  )
+      <div>
+        <img
+          src={dogimage}
+          alt="dog says thank you for waiting as the page loads"
+        />
+      </div>
+    );
   }
 };
 

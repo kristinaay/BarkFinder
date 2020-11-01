@@ -13,7 +13,6 @@ body {
 }
 
 .button {
-  position: absolute;
   margin: 2px;
   font-size: 20px;
   color: white;
@@ -28,6 +27,31 @@ body {
 }
 
 .button:hover {
+  background: linear-gradient(to bottom, #6 34b30 5%, #7d5d3b 100%);
+  background-color: #634b30;
+}
+
+.buttons {
+  position: relative;
+  float: top;
+  display: inline-flex;
+}
+
+.button2 {
+  margin: 2px;
+  font-size: 20px;
+  color: white;
+  background: linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
+  background-color: #7d5d3b;
+  border: 1px solid #54381e;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px 24px;
+  text-decoration: none;
+  top: 0px;
+}
+
+.button2:hover {
   background: linear-gradient(to bottom, #634b30 5%, #7d5d3b 100%);
   background-color: #634b30;
 }

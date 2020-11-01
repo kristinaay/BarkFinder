@@ -83,12 +83,38 @@ router.get("/signup", (req, res, next) => {
   res.render("signup", { messages });
 });
 
+// async function find(username) {
+//   console.log("find function");
+//   const users = await myDB.initializeUsers();
+
+//   let bool = await users.findOne({ username: username }, function (err, user) {
+//     if (err) {
+//       console.log("user not found");
+//       return false;
+//     }
+//     if (user) {
+//       console.log("user found");
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   });
+//   return bool;
+// }
+
 router.post("/signup", async (req, res, next) => {
-  const users = await myDB.initializeUsers();
   const registrationParams = req.body;
-  console.log(req.body);
-  console.log(registrationParams.password);
-  if (registrationParams.password != registrationParams.password2) {
+
+  const users = await myDB.initializeUsers();
+  // let invalidUsername = await find(users, registrationParams.username);
+
+  // console.log(invalidUsername);
+
+  if (
+    registrationParams.password != registrationParams.password2 ||
+    registrationParams.username == "" ||
+    registrationParams.pasword == ""
+  ) {
     req.flash("error", "Passwords do not match.");
     res.redirect("/signup");
   } else {
@@ -97,36 +123,103 @@ router.post("/signup", async (req, res, next) => {
       password: authUtils.encrypt(registrationParams.password),
     };
 
-    console.log(payload);
-
-    // users.findOne({ username: registrationParams.username }, function (
-    //   err,
-    //   user
-    // ) {
-    //   if (err) {
-    //     return next(err);
-    //   }
-    //   if (user) {
-    //     req.flash("error", "User already exists");
-    //     res.redirect("/auth/signup");
-    //   }
-    // });
-
-    users.insertOne(payload, (err) => {
+    users.findOne({ username: registrationParams.username }, function (
+      err,
+      user
+    ) {
       if (err) {
-        req.flash("error", "User account already exists.");
+        console.log("user not found");
+        return next(err);
+      }
+      if (user) {
+        console.log("user found");
+        res.redirect("/signup");
       } else {
-        req.flash("success", "User account registered successfully.");
+        users.insertOne(payload, (err) => {
+          if (err) {
+            req.flash("error", "User account already exists.");
+          } else {
+            req.flash("success", "User account registered successfully.");
+          }
+        });
+        console.log(req.flash());
+        console.log("done");
+        res.redirect("/signin");
       }
     });
-    console.log("done");
-    res.redirect("/signin");
   }
 });
 
 router.post("/signout", (req, res, next) => {
   req.session.destroy();
   res.redirect("/");
+});
+
+router.post("/update", async (req, res, next) => {
+  const users = await myDB.initializeUsers();
+  const info = req.body;
+  console.log(req.body);
+  console.log(info.username);
+  console.log(info.newusername);
+  console.log(info.newpassword);
+  console.log("update method");
+
+  if (!req.isAuthenticated()) {
+    res.redirect("/signin");
+  } else {
+    users.findOne({ username: info.username }, function (err, user) {
+      if (err) {
+        console.log("user not found");
+        return next(err);
+      }
+      if (!user) {
+        console.log("user not found - update");
+        res.redirect("/userprofile");
+      } else {
+        console.log("update");
+        users.updateOne(
+          {
+            username: info.username,
+          },
+          {
+            $set: {
+              username: info.newusername,
+              password: authUtils.encrypt(info.newpassword),
+            },
+          }
+        );
+
+        res.redirect("/table");
+      }
+    });
+  }
+});
+
+router.post("/delete", async (req, res, next) => {
+  const users = await myDB.initializeUsers();
+  const info = req.body;
+  console.log(req.body);
+  console.log(info.delete);
+
+  if (!req.isAuthenticated()) {
+    res.redirect("/signin");
+  } else {
+    users.findOne({ username: info.delete }, function (err, user) {
+      if (err) {
+        console.log("user not found");
+        return next(err);
+      }
+      if (!user) {
+        console.log("user not found - delete");
+        res.redirect("/userprofile");
+      } else {
+        users.deleteOne({
+          username: info.delete,
+        });
+        res.redirect("/");
+      }
+    });
+  }
 });
 
 module.exports = router;

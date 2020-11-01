@@ -9,7 +9,7 @@ class SignUp extends React.Component {
       <div>
         <div className="SignUp">
           <div className="container-fluid d-flex justify-content-center">
-            <div className="card">
+            <div className="signcard">
               <div className="card-header">
                 <h3>Sign Up</h3>
               </div>

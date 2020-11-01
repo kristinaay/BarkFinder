@@ -4,6 +4,7 @@ import Home from "./home.js";
 import SignUp from "./sign_up.js";
 import Dogs from "./dogs.js";
 import Table from "./table.js";
+import UserProfile from "./userprofile.js";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/signin" component={SignIn} />
           <Route path="/dogs" component={Dogs} />
           <Route path="/table" component={Table} />
+          <Route path="/userprofile" component={UserProfile} />
         </Switch>
       </Router>
     </div>
