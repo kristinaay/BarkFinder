@@ -2,7 +2,11 @@
 Authors: Kristina Yin and Jennifer Chang <br/> <br/>
 Class Link: https://johnguerra.co/classes/webDevelopment_fall_2020/ <br/>
 Project Objective: To create a website that allows users to create an account and then search through dogs up for adoption in foster homes near them (currently Bay Area only). <br/> <br/>
-Screenshots: To come <br/> <br/>
+Screenshots: <br/>
+![ScreenShot](/screenshots/screenshot0.jpg)
+![ScreenShot](/screenshots/screenshot1.jpg)
+For more screenshots, reference the "Screenshots" folder in this repository.
+<br/> <br/>
 Instructions to build: <br/>
 -Clone the repository <br/>
 -Do 'npm install' in main folder, myapp folder, and reactapp folder on command line </br>
