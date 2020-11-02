@@ -4,10 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
 function UserProfile() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const error = urlParams.get("error");
   return (
     <div className="user">
       <div className="container-fluid d-flex justify-content-center">
-        <div className="usercard">
+        <div className="usercard3">
           <div className="card-header">
             <h3>My Account</h3>
           </div>
@@ -74,6 +76,7 @@ function UserProfile() {
                   form="delete"
                 />
               </div>
+              {error ? <div className="danger">{error}</div> : ""}
               <div className="submitButtons">
                 <div className="form-group">
                   <input

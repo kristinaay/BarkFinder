@@ -21,6 +21,32 @@ function MyDB() {
       .finally(() => client.close());
   };
 
+  myDB.getDogs = async () => {
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
+    await client.connect();
+    //database
+    const db = client.db("db");
+    //collection
+    const dog_info = db.collection("dog_info");
+
+    return dog_info;
+  };
+
+  myDB.getLikes = async () => {
+    const client = new MongoClient(uri, { useUnifiedTopology: true });
+    await client.connect();
+    //database
+    const db = client.db("db");
+    //collection
+    const dog_info = db.collection("dog_info");
+
+    const query2 = ({}, { likes: 1, _id: 0 });
+    return dog_info
+      .find(query2)
+      .toArray()
+      .finally(() => client.close());
+  };
+
   myDB.initialize = async () => {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
     await client.connect();
@@ -40,6 +66,7 @@ function MyDB() {
         age: element.age,
         link: element.link,
         picLink: element.picLink,
+        likes: 0,
       });
     }
   };

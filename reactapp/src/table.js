@@ -1,14 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import "./table.css";
 import dogimage from "./Images/buffer.jpg";
-import {
-  Container,
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-} from "reactstrap";
+import { Container, Card, CardImg, CardBody, CardTitle } from "reactstrap";
 import TableContainer from "./TableContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { SelectColumnFilter } from "./filters";
@@ -35,10 +28,10 @@ const Table = () => {
 
   useEffect(() => {
     getPosts();
-  }, []); // Only run the first time
+  });
 
   const renderRowSubComponent = (row) => {
-    const { name, gender, picLink } = row.original;
+    const { name, picLink } = row.original;
     return (
       <div>
         <Card style={{ width: "18rem", margin: "0 auto" }}>
@@ -90,14 +83,31 @@ const Table = () => {
         Filter: SelectColumnFilter,
         filter: "equals",
       },
-    ],
-    []
+      {
+        Header: "Hearts💖",
+        accessor: "likes",
+        disableSortBy: true,
+        Filter: SelectColumnFilter,
+        filter: "equals",
+      },
+    ]
+    // []
   );
 
   if (loaded) {
     return (
       <div>
         <div className="buttons">
+          <Link to="/dogpage">
+            <button className="button2" type="button">
+              Send a 💖
+            </button>
+          </Link>
+          <Link to="/userprofile">
+            <button className="button2" type="button">
+              My Account
+            </button>
+          </Link>
           <form className="form" action="/auth/signout" method="post">
             <input
               className="button"
@@ -106,11 +116,6 @@ const Table = () => {
               value="Sign Out"
             />
           </form>
-          <Link to="/userprofile">
-            <button className="button2" type="button">
-              My Account
-            </button>
-          </Link>
         </div>
         <Container style={{ marginTop: 100 }}>
           <TableContainer

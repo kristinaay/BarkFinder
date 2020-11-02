@@ -10,18 +10,20 @@ const Strategy = require("passport-local").Strategy;
 const flash = require("connect-flash");
 const authUtils = require("../utils/auth");
 const Session = require("express-session");
+const cookieParser = require("cookie-parser");
 
+app.use(cookieParser("cookie_secret"));
 app.use(flash());
+app.use(
+  Session({
+    secret: "cookie_secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
 app.use(Passport.initialize());
 app.use(Passport.session());
-
-router.get("/signin", (req, res, next) => {
-  const messages = req.flash() || ["Invalid username or password."];
-  res.render("signin", { messages });
-  // res.render("../../reactapp/sign_in.js", function (err, html) {
-  //   res.send(html);
-  // });
-});
 
 const MongoClient = require("mongodb").MongoClient;
 const uri = process.env.MONGO_URL || "mongodb://localhost:27017";
@@ -44,9 +46,6 @@ Passport.use(
         if (!user) {
           return done(null, false);
         }
-        console.log(user.password);
-        console.log(authUtils.decrypt(user.password));
-        console.log(password);
         let newPass = authUtils.decrypt(user.password);
         if (password != newPass) {
           return done(null, false);
@@ -69,54 +68,22 @@ Passport.deserializeUser((id, done) => {
 router.post(
   "/signin",
   Passport.authenticate("local", {
-    failureFlash: true,
-    failureRedirect: "/signin",
-    messages: flash("Invalid username or password"),
-  }),
-  (req, res, next) => {
-    res.redirect("/table");
-  }
+    successRedirect: "/table",
+    failureRedirect: "/signin?error=Invalid username or password.",
+  })
 );
-
-router.get("/signup", (req, res, next) => {
-  const messages = req.flash();
-  res.render("signup", { messages });
-});
-
-// async function find(username) {
-//   console.log("find function");
-//   const users = await myDB.initializeUsers();
-
-//   let bool = await users.findOne({ username: username }, function (err, user) {
-//     if (err) {
-//       console.log("user not found");
-//       return false;
-//     }
-//     if (user) {
-//       console.log("user found");
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   });
-//   return bool;
-// }
 
 router.post("/signup", async (req, res, next) => {
   const registrationParams = req.body;
 
   const users = await myDB.initializeUsers();
-  // let invalidUsername = await find(users, registrationParams.username);
-
-  // console.log(invalidUsername);
 
   if (
     registrationParams.password != registrationParams.password2 ||
     registrationParams.username == "" ||
     registrationParams.pasword == ""
   ) {
-    req.flash("error", "Passwords do not match.");
-    res.redirect("/signup");
+    res.redirect("/signup?error=Passwords must match.");
   } else {
     const payload = {
       username: registrationParams.username,
@@ -128,12 +95,10 @@ router.post("/signup", async (req, res, next) => {
       user
     ) {
       if (err) {
-        console.log("user not found");
         return next(err);
       }
       if (user) {
-        console.log("user found");
-        res.redirect("/signup");
+        res.redirect("/signup?error=Username already exists.");
       } else {
         users.insertOne(payload, (err) => {
           if (err) {
@@ -142,8 +107,6 @@ router.post("/signup", async (req, res, next) => {
             req.flash("success", "User account registered successfully.");
           }
         });
-        console.log(req.flash());
-        console.log("done");
         res.redirect("/signin");
       }
     });
@@ -158,25 +121,17 @@ router.post("/signout", (req, res, next) => {
 router.post("/update", async (req, res, next) => {
   const users = await myDB.initializeUsers();
   const info = req.body;
-  console.log(req.body);
-  console.log(info.username);
-  console.log(info.newusername);
-  console.log(info.newpassword);
-  console.log("update method");
 
   if (!req.isAuthenticated()) {
     res.redirect("/signin");
   } else {
     users.findOne({ username: info.username }, function (err, user) {
       if (err) {
-        console.log("user not found");
         return next(err);
       }
       if (!user) {
-        console.log("user not found - update");
-        res.redirect("/userprofile");
+        res.redirect("/userprofile?error=User not found, please try again.");
       } else {
-        console.log("update");
         users.updateOne(
           {
             username: info.username,
@@ -198,20 +153,16 @@ router.post("/update", async (req, res, next) => {
 router.post("/delete", async (req, res, next) => {
   const users = await myDB.initializeUsers();
   const info = req.body;
-  console.log(req.body);
-  console.log(info.delete);
 
   if (!req.isAuthenticated()) {
     res.redirect("/signin");
   } else {
     users.findOne({ username: info.delete }, function (err, user) {
       if (err) {
-        console.log("user not found");
         return next(err);
       }
       if (!user) {
-        console.log("user not found - delete");
-        res.redirect("/userprofile");
+        res.redirect("/userprofile?error=User not found, please try again.");
       } else {
         users.deleteOne({
           username: info.delete,
@@ -220,6 +171,31 @@ router.post("/delete", async (req, res, next) => {
       }
     });
   }
+});
+
+router.post("/updateLike", async (req, res, next) => {
+  const dogs = await myDB.getDogs();
+  const info = req.body;
+  dogs.findOne({ name: info.dogname }, function (err, dog) {
+    if (err) {
+      return next(err);
+    }
+    if (!dog) {
+      res.redirect("/dogpage?error=Dog not found, please try again.");
+    } else {
+      dogs.updateOne(
+        {
+          name: info.dogname,
+          breed: info.dogbreed,
+        },
+        {
+          $inc: { likes: 1 },
+        }
+      );
+
+      res.redirect("/table");
+    }
+  });
 });
 
 module.exports = router;

@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function SignIn() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const error = urlParams.get("error");
   return (
     <div>
       <div className="SignIn">
@@ -35,6 +37,8 @@ function SignIn() {
                   />
                 </div>
                 <br />
+                {error ? <div className="danger">{error}</div> : ""}
+
                 <div className="form-group">
                   <input
                     type="submit"
