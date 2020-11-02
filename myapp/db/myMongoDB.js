@@ -4,8 +4,10 @@ const dataFile = require("../routes/index.js");
 function MyDB() {
   const myDB = {};
 
-  const uri = process.env.MONGO_URL || "mongodb://localhost:27017";
-  //
+  const uri =
+    process.env.MONGO_URL ||
+    "mongodb+srv://Kristina:test@cluster0.d0ey3.mongodb.net/db?retryWrites=true&w=majority";
+  //"mongodb://localhost:27017"
   myDB.getPosts = async () => {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
     await client.connect();
