@@ -5,7 +5,7 @@ function MyDB() {
   const myDB = {};
 
   const uri = process.env.MONGO_URL || "mongodb://localhost:27017";
-
+  //
   myDB.getPosts = async () => {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
     await client.connect();
