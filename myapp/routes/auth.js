@@ -26,7 +26,9 @@ app.use(Passport.initialize());
 app.use(Passport.session());
 
 const MongoClient = require("mongodb").MongoClient;
-const uri = process.env.MONGO_URL || "mongodb://localhost:27017";
+const uri =
+  process.env.MONGO_URL ||
+  "mongodb+srv://Kristina:test@cluster0.d0ey3.mongodb.net/db?retryWrites=true&w=majority";
 
 Passport.use(
   new Strategy(
@@ -186,7 +188,6 @@ router.post("/updateLike", async (req, res, next) => {
       dogs.updateOne(
         {
           name: info.dogname,
-          breed: info.dogbreed,
         },
         {
           $inc: { likes: 1 },
