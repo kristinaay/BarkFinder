@@ -97,38 +97,6 @@ const TableContainer = ({ columns, data, renderRowSubComponent }) => {
       </Table>
 
       <Row style={{ maxWidth: 1000, margin: "0 auto", textAlign: "center" }}>
-        <Col md={3}>
-          <Button
-            color="primary"
-            onClick={() => gotoPage(0)}
-            disabled={!canPreviousPage}
-          >
-            {"<<"}
-          </Button>
-          <Button
-            color="primary"
-            onClick={previousPage}
-            disabled={!canPreviousPage}
-          >
-            {"<"}
-          </Button>
-        </Col>
-        <Col md={2} style={{ marginTop: 7 }}>
-          Page{" "}
-          <strong>
-            {pageIndex + 1} of {pageOptions.length}
-          </strong>
-        </Col>
-        <Col md={2}>
-          <Input
-            type="number"
-            min={1}
-            style={{ width: 70 }}
-            max={pageOptions.length}
-            defaultValue={pageIndex + 1}
-            onChange={onChangeInInput}
-          />
-        </Col>
         <Col md={2}>
           <CustomInput
             type="select"
@@ -136,24 +104,12 @@ const TableContainer = ({ columns, data, renderRowSubComponent }) => {
             onChange={onChangeInSelect}
           >
             >
-            {[10, 20, 30, 40, 50].map((pageSize) => (
+            {[10, 20, 30, 40, 50, ,60, 70, 80, 100, 200, 500, 1000].map((pageSize) => (
               <option key={pageSize} value={pageSize}>
                 Show {pageSize}
               </option>
             ))}
           </CustomInput>
-        </Col>
-        <Col md={3}>
-          <Button color="primary" onClick={nextPage} disabled={!canNextPage}>
-            {">"}
-          </Button>
-          <Button
-            color="primary"
-            onClick={() => gotoPage(pageCount - 1)}
-            disabled={!canNextPage}
-          >
-            {">>"}
-          </Button>
         </Col>
       </Row>
     </Fragment>

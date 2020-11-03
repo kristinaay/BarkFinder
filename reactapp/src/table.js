@@ -14,7 +14,7 @@ const Table = () => {
   const getPosts = async () => {
     console.log("getting posts");
     try {
-      await fetch("/getdogs")
+      await fetch("/posts")
         .then((res) => res.json())
         .then((result) => {
           setDogs(result);
