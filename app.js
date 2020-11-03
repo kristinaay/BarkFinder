@@ -42,6 +42,10 @@ Passport.deserializeUser((id, done) => {
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 
+//app.use(express.static(path.join(__dirname, "./reactapp/build")));
 app.use(express.static(path.join(__dirname, "./reactapp/build")));
+app.get("*", (request, response) => {
+  response.sendFile(path.join(__dirname, "./reactapp/build", "index.html"));
+});
 
 module.exports = app;
