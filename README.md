@@ -11,8 +11,7 @@ For more screenshots, reference the "Screenshots" folder in this repository.
 Instructions to build: <br/>
 -Clone the repository <br/>
 -Do 'npm install' at root. Also cd into the reactapp folder and do 'npm install'</br>
--Start mongo server (type: "C:\Program Files\MongoDB\Server\4.4\bin\mongo.exe" on command line for Windows, see docs for Mac) <br/>
--Build the project with 'yarn build' in reactapp <br/>
+-Build the project with 'yarn build' in reactapp (optional) <br/>
 -Start backend and frontend servers with 'npm start' in root and reactapp folder<br/>
 -Go to localhost:3000 to see the website! <br/> <br/>
 Credits: <br/>
