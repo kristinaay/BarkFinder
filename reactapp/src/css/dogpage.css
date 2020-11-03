@@ -3,7 +3,7 @@ body {
   margin: 0px;
 }
 .dogpage {
-  background: url(./Images/dog3.jpg) center center / cover no-repeat;
+  background: url(../Images/dog3.jpg) center center / cover no-repeat;
 }
 .usercard2 {
   background-color: whitesmoke;

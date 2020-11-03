@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import "./table.css";
+import "./css/table.css";
 import dogimage from "./Images/buffer.jpg";
 import { Container, Card, CardImg, CardBody, CardTitle } from "reactstrap";
 import TableContainer from "./TableContainer";

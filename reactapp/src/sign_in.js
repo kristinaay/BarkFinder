@@ -1,7 +1,7 @@
 import React from "react";
-import "./sign_in.css";
+import "./css/sign_in.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function SignIn() {
   const urlParams = new URLSearchParams(window.location.search);

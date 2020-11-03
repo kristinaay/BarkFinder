@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-const dataFile = require("../routes/index.js");
+const dataFile = require("../routes");
 
 function MyDB() {
   const myDB = {};

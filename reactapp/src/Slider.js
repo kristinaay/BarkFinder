@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 
-import useSlider from "./hooks/useSlider";
+import useSlider from "./useSlider";
 
 const Slider = ({ images }) => {
   const slideImage = useRef(null);
