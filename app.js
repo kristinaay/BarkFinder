@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const indexRouter = require("./routes");
+const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const flash = require("connect-flash");
 const Session = require("express-session");
@@ -42,6 +42,6 @@ Passport.deserializeUser((id, done) => {
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 
-app.use(express.static(path.join(__dirname, "reactapp/build")));
+app.use(express.static(path.join(__dirname, "./reactapp/build")));
 
 module.exports = app;
