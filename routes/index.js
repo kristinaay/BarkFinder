@@ -13,7 +13,6 @@ router.get("/posts", async (req, res) => {
 
 //to get dogs for the slideshow and table
 router.get("/getdogs", async (req, res) => {
-  await myDB.initialize();
   let posts = await myDB.getPosts();
   console.log("done");
   res.json(posts);

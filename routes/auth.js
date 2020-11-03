@@ -76,6 +76,8 @@ router.post(
 );
 
 router.post("/signup", async (req, res, next) => {
+
+  myDB.initialize(); //load dogs
   const registrationParams = req.body;
 
   const users = await myDB.initializeUsers();
