@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useMemo } from "react";
-import "./sign_up.css";
+import React from "react";
+import "./css/sign_up.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 function SignUp() {
   const urlParams = new URLSearchParams(window.location.search);
   const error = urlParams.get("error");

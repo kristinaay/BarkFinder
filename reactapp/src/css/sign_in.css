@@ -4,7 +4,7 @@ body {
 }
 
 .SignIn {
-  background: url(./Images/sign_in.jpg) center center / cover no-repeat;
+  background: url(../Images/sign_in.jpg) center center / cover no-repeat;
 }
 
 .signcard {

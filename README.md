@@ -1,4 +1,5 @@
 # BarkFinder
+
 Authors: Kristina Yin and Jennifer Chang <br/> <br/>
 Class Link: https://johnguerra.co/classes/webDevelopment_fall_2020/ <br/>
 Project Objective: To create a website that allows users to create an account and then search through dogs up for adoption in foster homes near them (currently Bay Area only). <br/> <br/>
@@ -18,6 +19,5 @@ Credits: <br/>
 Photos: Alvan Nee @alvannee on Unsplash, Chewy on Unsplash, @lightrisephoto on Unsplash,
 @jamie452 on Unsplash, @sylvester_s on Unsplash, and @ericjamesward on Unsplash <br/>
 Scroll button from @Naoya on codepen.io <br/>
-Dog data scraped from: </br>
--https://www.ilovefamilydog.org/ <br/>
+Dog data scraped from: </br> -https://www.ilovefamilydog.org/ <br/>
 -(More may be added)<br/>
