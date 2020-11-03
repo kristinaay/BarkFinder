@@ -6,7 +6,7 @@ import {
   useExpanded,
   usePagination,
 } from "react-table";
-import { Table, Row, Col, Button, Input, CustomInput } from "reactstrap";
+import { Table, Row, Col, CustomInput } from "reactstrap";
 import { Filter, DefaultColumnFilter } from "./filters";
 
 const TableContainer = ({ columns, data, renderRowSubComponent }) => {
@@ -17,15 +17,8 @@ const TableContainer = ({ columns, data, renderRowSubComponent }) => {
     page,
     prepareRow,
     visibleColumns,
-    canPreviousPage,
-    canNextPage,
-    pageOptions,
-    pageCount,
-    gotoPage,
-    nextPage,
-    previousPage,
     setPageSize,
-    state: { pageIndex, pageSize },
+    state: { pageSize },
   } = useTable(
     {
       columns,
@@ -45,11 +38,6 @@ const TableContainer = ({ columns, data, renderRowSubComponent }) => {
 
   const onChangeInSelect = (event) => {
     setPageSize(Number(event.target.value));
-  };
-
-  const onChangeInInput = (event) => {
-    const page = event.target.value ? Number(event.target.value) - 1 : 0;
-    gotoPage(page);
   };
 
   return (
@@ -104,7 +92,7 @@ const TableContainer = ({ columns, data, renderRowSubComponent }) => {
             onChange={onChangeInSelect}
           >
             >
-            {[10, 20, 30, 40, 50, ,60, 70, 80, 100, 200, 500, 1000].map((pageSize) => (
+            {[10, 20, 30, 40, 50, 60, 70, 80, 100, 200, 500, 1000].map((pageSize) => (
               <option key={pageSize} value={pageSize}>
                 Show {pageSize}
               </option>

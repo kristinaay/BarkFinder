@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const useSlider = (slideImage, slideText, images) => {
   let slideCounter = 0;
 
-  useEffect(() => startSlider(), [images]); //fix
+  useEffect(() => startSlider());
 
   const startSlider = () => {
     slideImage.current.style.backgroundImage = `linear-gradient(

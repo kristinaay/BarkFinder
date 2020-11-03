@@ -25,7 +25,7 @@ function Dogs() {
 
   useEffect(() => {
     getPosts();
-  }, []); // Only run the first time
+  }); // Only run the first time
 
   if (loaded) {
     return (
