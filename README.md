@@ -1,5 +1,5 @@
 # BarkFinder
-
+Deployed: https://radiant-badlands-67142.herokuapp.com/
 Authors: Kristina Yin and Jennifer Chang <br/> <br/>
 Class Link: https://johnguerra.co/classes/webDevelopment_fall_2020/ <br/>
 Project Objective: To create a website that allows users to create an account and then search through dogs up for adoption in foster homes near them (currently Bay Area only). <br/> <br/>
