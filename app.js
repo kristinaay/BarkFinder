@@ -31,6 +31,7 @@ app.use((req, res, next) => {
   next();
 });
 
+# serializer and deserializer has been setup in your route/auth.js module https://github.com/kristinaay/BarkFinder/blob/main/routes/auth.js#L62
 Passport.serializeUser((user, done) => {
   done(null, user._id);
 });
