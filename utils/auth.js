@@ -1,6 +1,8 @@
+# I think the key and iv should be setup in environment variables.
 const crypto = require("crypto"),
   key = "qqqqqqqqqqqqsrUYKeaWqwakkjsasouy",
   iv = "f0644aa8566bdd13";
+
 
 function encrypt(data) {
   let cipher = crypto.createCipheriv("aes-256-cbc", key, iv);
