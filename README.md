@@ -1,4 +1,5 @@
 # BarkFinder
+
 Deployed: https://radiant-badlands-67142.herokuapp.com/ <br/>
 Authors: Kristina Yin and Jennifer Chang <br/> <br/>
 Class Link: https://johnguerra.co/classes/webDevelopment_fall_2020/ <br/>
@@ -20,4 +21,3 @@ Photos: Alvan Nee @alvannee on Unsplash, Chewy on Unsplash, @lightrisephoto on U
 Scroll button from @Naoya on codepen.io <br/>
 Dog data scraped from: </br> -https://www.ilovefamilydog.org/ <br/>
 Tutorials used: https://thewidlarzgroup.com/react-table-7/, https://blog.logrocket.com/building-carousel-component-react-hooks/
--
